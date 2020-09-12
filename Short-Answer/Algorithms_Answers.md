@@ -23,7 +23,7 @@ testing whether or not the egg breaks.. since we are really just trying to find 
 point the eggs start to break.. but that would be awful if the building were very tall. 
 It also brings the chance at breaking a lot of eggs, which we are trying to minimize.
 
-I feel the best approach for this in my mind would be a binary search. We would find the
+I feel the best approach for this in my mind would be a binary search O(log n). We would find the
 middle floor, drop an egg.. if it breaks, we are too high. We would then scale down the 
 building, cutting the floors (n) in half //2 each time and test whether or not the egg 
 breaks. Eventually we will know the breakpoint where the egg would not break vs. where 
