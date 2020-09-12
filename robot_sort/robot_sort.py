@@ -97,7 +97,37 @@ class SortingRobot:
         Sort the robot's list.
         """
         # Fill this out
-        pass
+        #PLAN
+        #We were given some hints in the readme that says we should use a sorting method we have learned
+        #recently. I am going to choose the bubble sort algorithm for this problem. 
+        #When considering what needed to be done, bubble sort stood out to me the most.. in my bubble sort
+        #function I made a temporary variable called "swap_made" which defaults to false and then becomes
+        #true after a swap was made. Then, if a swap was made, it would go through again. I will use the
+        #robot's light in place of that variable.
+
+        #the light will be on while swaps have been made, otherwise it will be off. it defaults to on so
+        #that we can iterate through the loop that follows
+        self.set_light_on()
+        while self.light_is_on():
+            #now we will se the light off. we will turn it back on if a swap has been made.
+            self.set_light_off()
+            while self.can_move_right(): #we are not at the end of the list
+                self.swap_item() #our hands should be empty so we need to pick up an item
+                self.move_right() #move right
+                if self.compare_item() == 1: #held item's value is greater is what == 1 means
+                    self.swap_item() #this function swaps the held item with the smaller item
+                    #the robot is now holding the smaller item.. so we will move left and place it
+                    self.move_left()
+                    self.swap_item()
+                    self.move_right()
+                    self.set_light_on() #a swap has been made.. set light on
+                else: #held item's value is -1, 0 meaning the held item is = to or < than
+                    self.move_left() #move back left.. put item down.. move right
+                    self.swap_item()
+                    self.move_right()
+            while self.can_move_left(): #we are not at the start of the list
+                self.move_left()
+
 
 
 if __name__ == "__main__":
